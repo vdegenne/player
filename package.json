@@ -5,8 +5,12 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"import": "./lib/index.js",
-			"types": "./lib/index.d.ts"
+			"import": "./lib/player.js",
+			"types": "./lib/player.d.ts"
+		},
+		"./player-dialog.js": {
+			"import": "./lib/player-dialog.js",
+			"types": "./lib/player-dialog.d.ts"
 		}
 	},
 	"scripts": {
@@ -16,12 +20,18 @@
 		"./lib/"
 	],
 	"devDependencies": {
+		"@material/web": "^2.3.0",
 		"@snar/lit": "^1.8.0",
+		"@vdegenne/forms": "file:../forms",
+		"lit": "^3.3.1",
 		"typescript": "^5.9.2",
 		"wireit": "^0.14.12"
 	},
 	"peerDependencies": {
-		"@snar/lit": "^1.0.0"
+		"@snar/lit": "^1.0.0",
+		"@material/web": "^2.0.0",
+		"@vdegenne/forms": "file:../forms",
+		"lit": "^3.0.0"
 	},
 	"wireit": {
 		"build": {
