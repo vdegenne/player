@@ -37,3 +37,12 @@ class QuizPlayerDialog extends PlayerDialog {
 
 export const quizPlayerDialog = new QuizPlayerDialog(quizPlayer)
 ```
+
+Then use an import to improve code splitting
+
+```ts
+export async function openQuizPlayerDialog() {
+	const {quizPlayerDialog} = await import('./player.js')
+	quizPlayerDialog.show()
+}
+```
