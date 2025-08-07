@@ -6,7 +6,6 @@ import {type Player} from './player.js'
  * Do not forget to add imports:
  * import '@material/web/dialog/dialog.js';
  * import '@material/web/iconbutton/icon-button.js';
- * import '@material/web/icon/icon.js';
  * import '@material/web/button/filled-tonal-button.js';
  */
 export class PlayerDialog extends LitElement {

@@ -56,7 +56,6 @@ export class Player extends ReactiveController {
 
 		await this.loopCall()
 
-		await new Promise((r) => setTimeout(r, 10))
 		requestAnimationFrame(this.loop)
 	}
 
