@@ -1,6 +1,17 @@
 ## Example
 
 ```ts
+import '@material/web/button/filled-tonal-button.js'
+import '@material/web/dialog/dialog.js'
+import '@material/web/iconbutton/icon-button.js'
+import '@material/web/textfield/filled-text-field.js'
+import {state} from '@snar/lit'
+import {FormBuilder} from '@vdegenne/forms'
+import {Player} from '@vdegenne/player'
+import {PlayerDialog} from '@vdegenne/player/player-dialog.js'
+import {customElement} from 'custom-element-decorator'
+import {html} from 'lit'
+import {saveToLocalStorage} from 'snar-save-to-local-storage'
 import '@material/web/textfield/outlined-text-field.js'
 import {state} from '@snar/lit'
 import {FormBuilder} from '@vdegenne/forms'
@@ -15,6 +26,10 @@ class QuizPlayer extends Player {
 	F = new FormBuilder(this)
 	@state() pauseUntilAnswerS = 10
 
+	protected onStop() {
+		// cancelSpeech()
+	}
+
 	protected async loopCall() {
 		/* implementation */
 	}
@@ -22,10 +37,11 @@ class QuizPlayer extends Player {
 export const quizPlayer = new QuizPlayer()
 
 @customElement({name: 'quiz-player-dialog', inject: true})
+@withStyles()
 class QuizPlayerDialog extends PlayerDialog {
 	protected renderContent() {
 		return html`
-			<div>
+			<div class="flex flex-col gap-3">
 				${quizPlayer.F.TEXTFIELD('Pause until answer', 'pauseUntilAnswerS', {
 					type: 'number',
 					suffixText: 'seconds',

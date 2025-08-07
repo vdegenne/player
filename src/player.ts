@@ -24,6 +24,8 @@ export class Player extends ReactiveController {
 		if (changed.has('state')) {
 			if (this.state === 'play') {
 				this.loop()
+			} else if (this.state === 'stop') {
+				this.onStop()
 			}
 		}
 	}
@@ -50,6 +52,8 @@ export class Player extends ReactiveController {
 	protected async loopCall(): Promise<void> {
 		// default no-op
 	}
+
+	protected onStop() {}
 
 	loop = async () => {
 		if (this.state !== 'play') return
