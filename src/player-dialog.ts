@@ -2,24 +2,30 @@ import {html, LitElement, PropertyValues} from 'lit'
 import {state} from 'lit/decorators.js'
 import {type Player} from './player.js'
 
+/**
+ * Do not forget to add imports:
+ * import '@material/web/dialog/dialog.js';
+ * import '@material/web/iconbutton/icon-button.js';
+ * import '@material/web/icon/icon.js';
+ * import '@material/web/button/filled-tonal-button.js';
+ */
 export class PlayerDialog extends LitElement {
 	@state() open = false
 	@state() title = 'Player'
 
 	constructor(protected playerCtrl: Player) {
 		super()
-
 		playerCtrl.bind(this)
 	}
 
 	#firstImports = false
 	protected updated(_changedProperties: PropertyValues): void {
 		if (this.open === true && !this.#firstImports) {
-			import('@material/web/dialog/dialog.js')
-			// import('@material/web/button/text-button.js')
-			import('@material/web/iconbutton/icon-button.js')
-			import('@material/web/icon/icon.js')
-			import('@material/web/button/filled-tonal-button.js')
+			// import('@material/web/dialog/dialog.js')
+			// // import('@material/web/button/text-button.js')
+			// import('@material/web/iconbutton/icon-button.js')
+			// import('@material/web/icon/icon.js')
+			// import('@material/web/button/filled-tonal-button.js')
 			this.#firstImports = true
 		}
 	}

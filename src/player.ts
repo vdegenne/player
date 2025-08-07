@@ -1,5 +1,4 @@
 import {type PropertyValues, ReactiveController, state} from '@snar/lit'
-import {FormBuilder} from '@vdegenne/forms'
 
 const states = ['stop', 'play', 'pause'] as const
 type PlayerState = (typeof states)[number]
@@ -8,9 +7,7 @@ export class Player extends ReactiveController {
 	@state() state: PlayerState = 'stop'
 	@state() skipPause = true
 
-	// F = new FormBuilder(this)
-
-	update(changed: PropertyValues<this>) {
+	update(_changed: PropertyValues<this>) {
 		if (this.state === 'play') {
 			if (!this.hasUpdated) {
 				this.state = 'pause'
@@ -61,5 +58,22 @@ export class Player extends ReactiveController {
 
 		await new Promise((r) => setTimeout(r, 10))
 		requestAnimationFrame(this.loop)
+	}
+
+	protected async wait(ms: number): Promise<void> {
+		let waited = 0
+		const step = 50 // ms granularity
+
+		while (waited < ms) {
+			if (this.state === 'stop') return
+
+			while (this.state === 'pause') {
+				await new Promise((r) => setTimeout(r, step))
+				if (<any>this.state === 'stop') return
+			}
+
+			await new Promise((r) => setTimeout(r, step))
+			waited += step
+		}
 	}
 }
