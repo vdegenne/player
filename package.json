@@ -1,6 +1,6 @@
 {
 	"name": "@vdegenne/player",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "",
 	"type": "module",
 	"exports": {
@@ -21,8 +21,8 @@
 	],
 	"devDependencies": {
 		"@material/web": "^2.3.0",
-		"@snar/lit": "^1.8.0",
-		"@vdegenne/forms": "^0.1.26",
+		"@snar/lit": "^1.8.1",
+		"@vdegenne/forms": "^0.1.35",
 		"lit": "^3.3.1",
 		"typescript": "^5.9.2",
 		"wireit": "^0.14.12"
